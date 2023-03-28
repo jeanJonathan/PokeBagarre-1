@@ -15,12 +15,7 @@ public class Bagarre {
   public Bagarre(PokeBuildApi webApi) {
     this.webApi = webApi;
   }
-
-
-  public CompletableFuture<Pokemon> demarrer(String nomPremierPokemon, String nomSecondPokemon) {
-    validerNomPokemons(nomPremierPokemon, nomSecondPokemon);
-    return webApi.recupererParNom(nomPremierPokemon)
-      .thenCombine(webApi.recupererParNom(nomSecondPokemon), Bagarre::determinerVainqueur);
+  public CompletableFuture<Pokemon> demarrer(String nomPremierPokemon, String nomSecondPokemon) {validerNomPokemons(nomPremierPokemon, nomSecondPokemon);return webApi.recupererParNom(nomPremierPokemon).thenCombine(webApi.recupererParNom(nomSecondPokemon), Bagarre::determinerVainqueur);
   }
 
   private void validerNomPokemons(String nomPremierPokemon, String nomSecondPokemon) {
